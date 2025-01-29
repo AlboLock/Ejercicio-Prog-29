@@ -1,0 +1,47 @@
+/*Color Palette https://colorhunt.co/palette/d6efd880af81508d4e1a5319 */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #80AF81;
+}
+
+header input{
+    padding: 0.25rem 0.75rem;
+    outline: 0;
+}
+
+header button{
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+main{
+    background-color: #508D4E;
+}
+
+h2{
+    padding: 1.5rem 0;
+    text-align: center;
+}
+
+table{
+    margin: 0 auto;
+}
+
+td{
+    border: 1px solid black;
+}
