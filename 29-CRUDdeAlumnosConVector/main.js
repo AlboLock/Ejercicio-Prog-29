@@ -29,15 +29,6 @@ function eliminarNombre(nombre) {
     pintarTabla(arrayNombres);
 }
 
-function pintarTabla(array){
-    document.getElementById('tabla').innerHTML = '';
-    elementosTabla = '<tr><td>Numero</td><td>Nombre</td>'
-    for (let i=0; i<array.length; i++){
-        elementosTabla += `<tr><td>${i + 1}</td><td>${array[i]}</td></tr>`
-    }
-    document.getElementById('tabla').innerHTML = elementosTabla;
-}
-
 
 
 
