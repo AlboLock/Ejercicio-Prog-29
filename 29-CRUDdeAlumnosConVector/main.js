@@ -51,7 +51,7 @@ function pintarTabla(array) {
 // Evento para detectar tecla Enter y añadir nombre si no está vacío
 
 cajaTexto.addEventListener("keydown", function(evento) {
-    if (evento.keyCode === 13) { 
+    if (evento.key === 'Enter') { 
         if (cajaTexto.value.trim() === "") {
             alert("El campo está vacío");
         } else {
