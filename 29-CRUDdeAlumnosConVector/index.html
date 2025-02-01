@@ -8,24 +8,26 @@
     </head>
 
     <body>
-        <header>
-            <div class="contenedor-inputs">
-                <input type="text" id="nombre">
+        <div class="contenedor-principal">
+            <div class="left-col">
+                <div class="contenedor-añadir">
+                    <input type="text" id="nombre">
+                    <button onclick="anadirNombre(nombre.value)">Añadir</button>
+                </div>
             </div>
-            <div class="contenedor-botones">
-                <button onclick="anadirNombre(nombre.value)">Añadir</button>
-                <button onclick="eliminarNombre(nombre.value)">Eliminar</button>
+            <main>
+                <h2>Lista de alumnos</h2>
+                <table id="tabla">
+                    <tr>
+                        <td>Numero</td>
+                        <td>Nombre</td>
+                    </tr>
+                </table>
+            </main>
+            <div class="right-col">
+                Funcionalidades futuras
             </div>
-        </header>
-        <main>
-            <h2>Lista de alumnos</h2>
-            <table id="tabla">
-                <tr>
-                    <td>Numero</td>
-                    <td>Nombre</td>
-                </tr>
-            </table>
-        </main>
+        </div>
     </body>
 <script src="main.js"></script>
 </html>
