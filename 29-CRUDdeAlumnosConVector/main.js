@@ -61,4 +61,3 @@ cajaTexto.addEventListener("keydown", function(evento) {
 });
 
 
-// Añadir botón a cada fila de la tabla (el botón elimina la fila y el nombre correspondiente)
