@@ -6,6 +6,9 @@ let botonAnadir = document.getElementById("botonAnadir");
 let botonModificar = document.getElementById("botonModificar");
 let botonCancelar = document.getElementById("botonCancelar");
 let nombreOriginal = "";
+let nombreCorto = 0;
+let nombreLargo = 0;
+let promedioNombres = 0;
 
 function anadirNombre(nombre) {
     if (typeof nombre !== "string" || nombre == "") {                                   // Verificar que el nombre es una cadena de texto
@@ -13,9 +16,7 @@ function anadirNombre(nombre) {
         alert("El campo está vacío");
         return; 
     }
-
     arrayNombres.push(nombre);               
-    console.log(arrayNombres);
     pintarTabla(arrayNombres);
 }
 
@@ -56,6 +57,11 @@ function pintarTabla(array) {
     totalAlumnos = document.createElement("tr");
     totalAlumnos.innerHTML = `<td>Total de alumnos:  ${contadorAlumnos}</td>`;
     tabla.appendChild(totalAlumnos);
+    promedioLongNombres();
+    estadisticasNombres = document.createElement("tr");
+    estadisticasNombres.classList.add('filaEstadisticas');
+    estadisticasNombres.innerHTML = `<td>Promedio logitud nombres: ${promedioNombres}</td><td>Letras nombre mas largo: ${nombreLargo}</td><td>Letras nombre mas corto: ${nombreCorto}</td>`;
+    tabla.appendChild(estadisticasNombres);
 }
 
 // Evento para detectar tecla Enter y añadir nombre si no está vacío
@@ -98,4 +104,20 @@ function volverAtras(){
     botonAnadir.style.display = "block";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
+}
+
+function promedioLongNombres(){
+    let longitudTotal = 0;
+    let totalNombres = 0;
+    nombreLargo = arrayNombres[0].length;
+    nombreCorto = arrayNombres[0].length;
+    for (let i=0; i<arrayNombres.length; i++){
+        longitudTotal += arrayNombres[i].length;
+        if (arrayNombres[i].length > nombreLargo)
+            nombreLargo = arrayNombres[i].length;
+        else if (arrayNombres[i].length < nombreCorto)
+            nombreCorto = arrayNombres[i].length;
+        totalNombres++;
+    }
+    promedioNombres = (longitudTotal / totalNombres).toFixed(2);
 }
