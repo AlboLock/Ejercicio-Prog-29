@@ -78,30 +78,25 @@ function seleccionarNombre(nombre) {
     botonAnadir.style.display = "none";
     botonCancelar.style.display = "block";
     botonModificar.style.display = "block";
-
-    
 }
 
-function modificarNombre() {
-    let nuevoNombre = cajaTexto.value;
-
+function modificarNombre(nombre) {
     for (let i = 0; i < arrayNombres.length; i++) {
         if ( arrayNombres[i] === nombreOriginal ) {
-            arrayNombres[i] = nuevoNombre;
-            break;
-    
-            
+            arrayNombres[i] = nombre;
         }
-        
     }
     botonAnadir.style.display = "block";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
     cajaTexto.value = "";
     nombreOriginal = "";
-    pintarTabla()
+    pintarTabla(arrayNombres);
 }
 
-
-
-
+function volverAtras(){
+    cajaTexto.value = '';
+    botonAnadir.style.display = "block";
+    botonCancelar.style.display = "none";
+    botonModificar.style.display = "none";
+}
