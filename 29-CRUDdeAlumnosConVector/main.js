@@ -11,8 +11,7 @@ let nombreLargo = 0;
 let promedioNombres = 0;
 
 function anadirNombre(nombre) {
-    if (typeof nombre !== "string" || nombre == "") {                                   // Verificar que el nombre es una cadena de texto
-        console.log("Error: El segundo parámetro debe ser una cadena de texto.");
+    if (nombre == "") {
         alert("El campo está vacío");
         return; 
     }
