@@ -55,7 +55,6 @@ function pintarTabla(array) {
     }
     totalAlumnos = document.createElement("tr");
     totalAlumnos.innerHTML = `<td>Total de alumnos:  ${contadorAlumnos}</td>`;
-    totalAlumnos.classList.add("filaTabla");
     tabla.appendChild(totalAlumnos);
 }
 
