@@ -1,6 +1,11 @@
 // Crear función que añade un nombre a un vector
 let arrayNombres = [];
 let cajaTexto = document.getElementById("nombre");
+let indice = 0;
+let botonAnadir = document.getElementById("botonAnadir");
+let botonModificar = document.getElementById("botonModificar");
+let botonCancelar = document.getElementById("botonCancelar");
+let nombreOriginal = "";
 
 function anadirNombre(nombre) {
     if (typeof nombre !== "string" || nombre.trim() === "") {                                   // Verificar que el nombre es una cadena de texto
@@ -20,7 +25,7 @@ function anadirNombre(nombre) {
 
 function eliminarNombre(nombre) {
 
-    const indice = arrayNombres.indexOf(nombre);
+    indice = arrayNombres.indexOf(nombre);
 
     if (indice !== -1) {
         arrayNombres.splice(indice, 1);                    // Si el nombre existe en el array, eliminarlo
@@ -37,15 +42,21 @@ function pintarTabla(array) {
     let tabla = document.getElementById("tabla");
     cajaTexto.value = "";
     cajaTexto.focus(); 
+    let contadorAlumnos = 0;
 
     tabla.innerHTML = "<tr><td>Numero</td><td>Nombre</td></tr>";
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
-        filaNueva.innerHTML = `<td>${i + 1}</td><td>${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;
+        filaNueva.innerHTML = `<td>${i + 1}</td><td onclick="seleccionarNombre('${array[i]}')" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;        
         filaNueva.classList.add("filaTabla");
-        tabla.appendChild(filaNueva);
+        tabla.appendChild(filaNueva); 
+        contadorAlumnos++;   
     }
+    totalAlumnos = document.createElement("tr");
+    totalAlumnos.innerHTML = `<td>Total de alumnos:  ${contadorAlumnos}</td>`;
+    totalAlumnos.classList.add("filaTabla");
+    tabla.appendChild(totalAlumnos);
 }
 
 // Evento para detectar tecla Enter y añadir nombre si no está vacío
@@ -59,5 +70,38 @@ cajaTexto.addEventListener("keydown", function(evento) {
         }
     }
 });
+
+function seleccionarNombre(nombre) {
+    cajaTexto.value = nombre;
+    nombreOriginal = nombre;
+    cajaTexto.focus();
+    botonAnadir.style.display = "none";
+    botonCancelar.style.display = "block";
+    botonModificar.style.display = "block";
+
+    
+}
+
+function modificarNombre() {
+    let nuevoNombre = cajaTexto.value;
+
+    for (let i = 0; i < arrayNombres.length; i++) {
+        if ( arrayNombres[i] === nombreOriginal ) {
+            arrayNombres[i] = nuevoNombre;
+            break;
+    
+            
+        }
+        
+    }
+    botonAnadir.style.display = "block";
+    botonCancelar.style.display = "none";
+    botonModificar.style.display = "none";
+    cajaTexto.value = "";
+    nombreOriginal = "";
+    pintarTabla()
+}
+
+
 
 
