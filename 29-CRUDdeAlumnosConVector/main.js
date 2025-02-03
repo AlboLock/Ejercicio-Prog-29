@@ -8,7 +8,7 @@ let botonCancelar = document.getElementById("botonCancelar");
 let nombreOriginal = "";
 
 function anadirNombre(nombre) {
-    if (typeof nombre !== "string" || nombre.trim() === "") {                                   // Verificar que el nombre es una cadena de texto
+    if (typeof nombre !== "string" || nombre == "") {                                   // Verificar que el nombre es una cadena de texto
         console.log("Error: El segundo parámetro debe ser una cadena de texto.");
         alert("El campo está vacío");
         return; 
