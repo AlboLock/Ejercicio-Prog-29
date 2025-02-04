@@ -33,50 +33,14 @@
     align-items: center;
 }
 
-.left-col input{
-    padding: 0.25rem 0.75rem;
-    outline: 0;
-    margin-bottom: 0.5rem;
-}
-
-.left-col button{
-    padding: 0.5rem 1rem;
-    margin-bottom: 0.25rem;
-    border-radius: 10px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-}
-
-.left-col button:hover{
-    background-color: #D6EFD8;
-}
-
 main{
     flex-basis: 50%;
 }
 
 .right-col{
     flex-basis: 25%;
-    font-size: 2rem;
 }
 
-h1{
-    padding: 1.5rem 0;
-    text-align: center;
-    font-weight: 600;
-}
-
-table{
-    margin: 0 auto;
-}
-
-td{
-    text-align: center;
-    padding: 1rem 5rem;
-    border-bottom: 1px solid black;
-}
 
 table button{
     padding: 0.5rem;
