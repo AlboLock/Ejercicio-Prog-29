@@ -56,7 +56,7 @@ function pintarTabla(array) {
     totalAlumnos = document.createElement("tr");
     totalAlumnos.innerHTML = `<td>Total de alumnos:  ${contadorAlumnos}</td>`;
     tabla.appendChild(totalAlumnos);
-    promedioLongNombres();
+    promedioLongNombres(arrayNombres);
     estadisticasNombres = document.createElement("tr");
     estadisticasNombres.classList.add('filaEstadisticas');
     estadisticasNombres.innerHTML = `<td>Promedio logitud nombres: ${promedioNombres}</td><td>Letras nombre mas largo: ${nombreLargo}</td><td>Letras nombre mas corto: ${nombreCorto}</td>`;
@@ -105,17 +105,17 @@ function volverAtras(){
     botonModificar.style.display = "none";
 }
 
-function promedioLongNombres(){
+function promedioLongNombres(array){
     let longitudTotal = 0;
     let totalNombres = 0;
-    nombreLargo = arrayNombres[0].length;
-    nombreCorto = arrayNombres[0].length;
-    for (let i=0; i<arrayNombres.length; i++){
-        longitudTotal += arrayNombres[i].length;
-        if (arrayNombres[i].length > nombreLargo)
-            nombreLargo = arrayNombres[i].length;
-        else if (arrayNombres[i].length < nombreCorto)
-            nombreCorto = arrayNombres[i].length;
+    nombreLargo = array[0].length;
+    nombreCorto = array[0].length;
+    for (let i=0; i<array.length; i++){
+        longitudTotal += array[i].length;
+        if (array[i].length > nombreLargo)
+            nombreLargo = array[i].length;
+        else if (array[i].length < nombreCorto)
+            nombreCorto = array[i].length;
         totalNombres++;
     }
     promedioNombres = (longitudTotal / totalNombres).toFixed(2);
