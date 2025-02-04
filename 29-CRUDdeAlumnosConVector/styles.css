@@ -107,10 +107,13 @@ table button:active{
     background-color: #508D4E;
     font-weight: 700;
     border-radius: 10px;
-    border: none;
-    transition: transform 2s ease-out;
+    border: 1px solid #508D4E;
+    transition: all 1s ease-out;
 }
 
 .filaEstadisticas td:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
+    border: 1px solid #039a10;
+    border-color: #039a10;
+    background-color: #8dbf8c;
 }
