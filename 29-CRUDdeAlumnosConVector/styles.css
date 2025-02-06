@@ -11,6 +11,7 @@
 }
 
 .contenedor-principal{
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -82,3 +83,29 @@ table button:active{
     background-color: #8dbf8c;
 }
 
+.contenedor-error{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    border: 2px solid red;
+}
+
+.contenedor-error h3{
+    background-color: #03249a;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+}
+
+.contenedor-error p{
+    text-align: center;
+    padding: 3rem 5rem;
+}
+
+.contenedor-error button{
+    margin: 4rem 50%;
+    transform: translateX(-50%);
+}

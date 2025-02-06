@@ -25,7 +25,7 @@
                     <button onclick="reemplazarTodos()" id="botonReemplazar" style="display: block;" >Reemplazar</button>
                 </div>
                 <div>
-                    <button id="bottonReves" onclick="nombreReves()">Revés</button>
+                    <button id="botonReves" onclick="nombreReves()">Revés</button>
                 </div>
             </div>
             <main>
@@ -39,6 +39,11 @@
             </main>
             <div class="right-col">
                 Funcionalidades futuras
+            </div>
+            <div class="contenedor-error">
+                <h3>Error</h3>
+                <p id="mensajeError">Error Message</p>
+                <button onclick="contenedorError.style.display = 'none';">Cerrar</button>
             </div>
         </div>
     </body>

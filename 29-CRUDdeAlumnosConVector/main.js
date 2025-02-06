@@ -9,14 +9,17 @@ let nombreOriginal = "";
 let nombreCorto = 0;
 let nombreLargo = 0;
 let promedioNombres = 0;
+let contenedorError = document.querySelector('.contenedor-error');
+let mensajeError = document.getElementById('mensajeError');
 
 
 function anadirNombre(nombre) {
     if (nombre == "") {
-        alert("El campo está vacío");
-        return; 
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'El campo está vacío';
+        return;
     }
-    arrayNombres.push(nombre);               
+    arrayNombres.push(nombre);
     pintarTabla(arrayNombres);
 }
 
@@ -31,9 +34,9 @@ function eliminarNombre(nombre) {
     if (indice !== -1) {
         arrayNombres.splice(indice, 1);                    // Si el nombre existe en el array, eliminarlo
     } else {
-        console.log("Error: El nombre no se encontró en el array.");
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'El nombre no se encontró en el array.';
     }
-    console.log(arrayNombres);
     pintarTabla(arrayNombres);
 }
 
@@ -42,17 +45,17 @@ function eliminarNombre(nombre) {
 function pintarTabla(array) {
     let tabla = document.getElementById("tabla");
     cajaTexto.value = "";
-    cajaTexto.focus(); 
+    cajaTexto.focus();
     let contadorAlumnos = 0;
 
     tabla.innerHTML = "<tr><td>Numero</td><td>Nombre</td></tr>";
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
-        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}" onclick="seleccionarNombre('${array[i]}', this.id)" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;        
+        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}" onclick="seleccionarNombre('${array[i]}', this.id)" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;
         filaNueva.classList.add("filaTabla");
-        tabla.appendChild(filaNueva); 
-        contadorAlumnos++;   
+        tabla.appendChild(filaNueva);
+        contadorAlumnos++;
     }
     totalAlumnos = document.createElement("tr");
     totalAlumnos.innerHTML = `<td>Total de alumnos:  ${contadorAlumnos}</td>`;
@@ -66,10 +69,11 @@ function pintarTabla(array) {
 
 // Evento para detectar tecla Enter y añadir nombre si no está vacío
 
-cajaTexto.addEventListener("keydown", function(evento) {
-    if (evento.key === 'Enter') { 
+cajaTexto.addEventListener("keydown", function (evento) {
+    if (evento.key === 'Enter') {
         if (cajaTexto.value.trim() === "") {
-            alert("El campo está vacío");
+            contenedorError.style.display = 'block';
+            mensajeError.innerHTML = 'El campo está vacío';
         } else {
             anadirNombre(cajaTexto.value);
         }
@@ -98,19 +102,19 @@ function modificarNombre(nombre) {
     pintarTabla(arrayNombres);
 }
 
-function volverAtras(){
+function volverAtras() {
     cajaTexto.value = '';
     botonAnadir.style.display = "block";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
 }
 
-function promedioLongNombres(array){
+function promedioLongNombres(array) {
     let longitudTotal = 0;
     let totalNombres = 0;
     nombreLargo = array[0].length;
     nombreCorto = array[0].length;
-    for (let i=0; i<array.length; i++){
+    for (let i = 0; i < array.length; i++) {
         longitudTotal += array[i].length;
         if (array[i].length > nombreLargo)
             nombreLargo = array[i].length;
@@ -125,9 +129,9 @@ function promedioLongNombres(array){
 
 function buscar() {
     let buscar = document.getElementById("buscar").value;
-    
 
-    
+
+
 }
 
 // V6: Crear función que reemplace todas las apariciones del nombre buscado por el nuevo nombre.
@@ -135,32 +139,44 @@ function buscar() {
 function reemplazarTodos() {
     let nombreBuscado = document.getElementById("buscarNombre").value;
     let nombreReemplazado = document.getElementById("reemplazarNombre").value;
-    
+
 
     if (nombreBuscado == "" || nombreReemplazado == "") {
-        alert("El campo está vacío");
-        return; 
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'Rellenar todos los campos';
+        return;
+    } else if (!arrayNombres.includes(nombreBuscado)) {
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'El nombre no se encontró en el array';
+    } else {
+        for (let i = 0; i < arrayNombres.length; i++) {
+            if (arrayNombres[i] === nombreBuscado) {
+                arrayNombres[i] = nombreReemplazado;
+            }
+        }
+        document.getElementById("buscarNombre").value = "";
+        document.getElementById("reemplazarNombre").value = "";
+
+        pintarTabla(arrayNombres);
     }
-    for (let i = 0; i < arrayNombres.length; i++) {
-        if (arrayNombres[i] === nombreBuscado){
-            arrayNombres[i] = nombreReemplazado;           }
-        
-    }
-    document.getElementById("buscarNombre").value = ""; 
-    document.getElementById("reemplazarNombre").value = ""; 
-    
-    pintarTabla(arrayNombres);
+
 }
 
-function nombreReves(){
-    if (document.getElementById('bottonReves').innerHTML == 'Revés')
-        document.getElementById('bottonReves').innerHTML = 'Derecho';
-    else
-        document.getElementById('bottonReves').innerHTML = 'Revés';
-    for (let i=0; i<arrayNombres.length; i++){
-        arrayLetras = arrayNombres[i].split('');
-        arrayLetrasReves = arrayLetras.reverse();
-        arrayNombres[i] = arrayLetrasReves.join('');
+function nombreReves() {
+    if (arrayNombres.length != 0) {
+        let botonReves = document.getElementById('botonReves');
+        if (botonReves.innerHTML == 'Revés')
+            botonReves.innerHTML = 'Derecho';
+        else
+            botonReves.innerHTML = 'Revés';
+        for (let i = 0; i < arrayNombres.length; i++) {
+            arrayLetras = arrayNombres[i].split('');
+            arrayLetrasReves = arrayLetras.reverse();
+            arrayNombres[i] = arrayLetrasReves.join('');
+        }
+        pintarTabla(arrayNombres);
+    } else {
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'No hay nombres en el la lista';
     }
-    pintarTabla(arrayNombres);
 }
