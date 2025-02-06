@@ -9,6 +9,8 @@ let nombreOriginal = "";
 let nombreCorto = 0;
 let nombreLargo = 0;
 let promedioNombres = 0;
+let buscar = document.getElementById("buscar");
+let reemplazar = document.getElementById("reemplazar");
 
 function anadirNombre(nombre) {
     if (nombre == "") {
@@ -119,4 +121,13 @@ function promedioLongNombres(array){
         totalNombres++;
     }
     promedioNombres = (longitudTotal / totalNombres).toFixed(2);
+}
+
+// V6: Crear función que reemplace todas las apariciones del nombre buscado 
+// por el nuevo nombre.
+
+function reemplazarTodos(nombre) {
+    buscar.find(arrayNombres)
+
+    
 }
