@@ -9,8 +9,7 @@ let nombreOriginal = "";
 let nombreCorto = 0;
 let nombreLargo = 0;
 let promedioNombres = 0;
-let buscar = document.getElementById("buscar");
-let reemplazar = document.getElementById("reemplazar");
+
 
 function anadirNombre(nombre) {
     if (nombre == "") {
@@ -123,11 +122,33 @@ function promedioLongNombres(array){
     promedioNombres = (longitudTotal / totalNombres).toFixed(2);
 }
 
-// V6: Crear función que reemplace todas las apariciones del nombre buscado 
-// por el nuevo nombre.
+// V5: Crear función que reciba un nombre y devuelva cuantas veces ese nombre es presente en la lista
 
-function reemplazarTodos(nombre) {
-    buscar.find(arrayNombres)
+function buscar() {
+    let buscar = document.getElementById("buscar").value;
+    
 
     
+}
+
+// V6: Crear función que reemplace todas las apariciones del nombre buscado por el nuevo nombre.
+
+function reemplazarTodos() {
+    let nombreBuscado = document.getElementById("buscarNombre").value;
+    let nombreReemplazado = document.getElementById("reemplazarNombre").value;
+    
+
+    if (nombreBuscado == "" || nombreReemplazado == "") {
+        alert("El campo está vacío");
+        return; 
+    }
+    for (let i = 0; i < arrayNombres.length; i++) {
+        if (arrayNombres[i] === nombreBuscado){
+            arrayNombres[i] = nombreReemplazado;           }
+        
+    }
+    document.getElementById("buscar").value = ""; 
+    document.getElementById("reemplazar").value = ""; 
+    
+    pintarTabla(arrayNombres);
 }
