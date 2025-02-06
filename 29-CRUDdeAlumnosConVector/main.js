@@ -49,7 +49,7 @@ function pintarTabla(array) {
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
-        filaNueva.innerHTML = `<td>${i + 1}</td><td onclick="seleccionarNombre('${array[i]}')" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;        
+        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}" onclick="seleccionarNombre('${array[i]}', this.id)" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;        
         filaNueva.classList.add("filaTabla");
         tabla.appendChild(filaNueva); 
         contadorAlumnos++;   
@@ -76,7 +76,10 @@ cajaTexto.addEventListener("keydown", function(evento) {
     }
 });
 
-function seleccionarNombre(nombre) {
+let indiceSeleccionado;
+
+function seleccionarNombre(nombre, indice) {
+    indiceSeleccionado = indice;
     cajaTexto.value = nombre;
     nombreOriginal = nombre;
     cajaTexto.focus();
@@ -86,11 +89,7 @@ function seleccionarNombre(nombre) {
 }
 
 function modificarNombre(nombre) {
-    for (let i = 0; i < arrayNombres.length; i++) {
-        if ( arrayNombres[i] === nombreOriginal ) {
-            arrayNombres[i] = nombre;
-        }
-    }
+    arrayNombres[indiceSeleccionado] = nombre;
     botonAnadir.style.display = "block";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
@@ -147,8 +146,21 @@ function reemplazarTodos() {
             arrayNombres[i] = nombreReemplazado;           }
         
     }
-    document.getElementById("buscar").value = ""; 
-    document.getElementById("reemplazar").value = ""; 
+    document.getElementById("buscarNombre").value = ""; 
+    document.getElementById("reemplazarNombre").value = ""; 
     
+    pintarTabla(arrayNombres);
+}
+
+function nombreReves(){
+    if (document.getElementById('bottonReves').innerHTML == 'Revés')
+        document.getElementById('bottonReves').innerHTML = 'Derecho';
+    else
+        document.getElementById('bottonReves').innerHTML = 'Revés';
+    for (let i=0; i<arrayNombres.length; i++){
+        arrayLetras = arrayNombres[i].split('');
+        arrayLetrasReves = arrayLetras.reverse();
+        arrayNombres[i] = arrayLetrasReves.join('');
+    }
     pintarTabla(arrayNombres);
 }
