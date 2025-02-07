@@ -208,16 +208,35 @@ function nombreReves(indice) {
 // Al terminar el proceso, el contenedor informativo se vaciará.
 
 function buscarReemplazar() {
-    let buscarReemplazar = document.getElementById("buscarReemplazar").value;
+    let nombreBuscado = document.getElementById("buscarReemplazar").value;
     let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
-    let contador = 0;
-    if (buscarReemplazar != "") {
+    mostrarReemplazar.innerHTML = "";
+    let nombreEncontrado = [];
+    
+    if (nombreBuscado != "") {
         for (let i = 0; i < arrayNombres.length; i++) {
-        if (buscarReemplazar == arrayNombres[i]) {
-        contador++  
+        if (nombreBuscado == arrayNombres[i]) {
+        nombreEncontrado.push(i);  
         }
     }
-    mostrarReemplazar.innerHTML = contador + arrayNombres[i];     
+    mostrarReemplazar.innerHTML = `Ìndice ${contador} Nombre: ${arrayNombres[i]}`;     
     }
     document.getElementById("buscarReemplazar").value = "";
+}
+
+// V10: Información Detallada de los Nombres
+// Añadir un botón informativo en cada fila de la tabla.
+// Al pulsarlo, mostrar en un contenedor los siguientes datos del nombre correspondiente:
+// El nombre.
+// Su longitud.
+// Si la longitud está por encima, por debajo o igual al promedio.
+// Si es el nombre más corto, más largo o ninguno de los dos.
+// El número de vocales en el nombre.
+
+function masInfo() {
+    if (arrayNombres.length != 0){
+    let masInfo = document.getElementById("masInfo");
+    
+    }
+    
 }
