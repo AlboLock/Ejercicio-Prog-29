@@ -19,13 +19,20 @@
             <div class="barraAcciones">
                 <div class="columna3">
                     <input type="text" id="buscar" placeholder="Buscar">
-                    <button onclick="buscar()" >Buscar</button>
+                    <button onclick="buscar()">Buscar N. apariciones</button>
+                    <button onclick="buscarReemplazar()" >Buscar Y Reemplazar</button>
                 </div>
                 <div class="columna3">
                     <input type="text" id="nombre" placeholder="Escriba un nombre">
+                    <input type="text" id="buscarNombre" placeholder="Nombre a buscar" style="display: none;">
+                    <input type="text" id="reemplazarNombre" placeholder="Reemplazar" style="display: none;">
                 </div>
                 <div class="columna3">
                     <button onclick="anadirNombre(nombre.value)" id="botonAnadir" style="display: block;"> + Agregar</button>
+                    <button onclick="modificarNombre(nombre.value)" id="botonModificar" style="display: none;">Mofificar</button>
+                    <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
+                    <button onclick="reemplazarTodos()" id="botonReemplazar" style="display: none;" >Reemplazar</button>
+                    <button>Reemplazar</button>
                 </div>
                 
             </div>
@@ -36,6 +43,14 @@
                         <td>Nombre</td>
                     </tr>
                 </table>
+            </div>
+            <div id="contenedoresFlotantes">
+
+            </div>
+            <div class="contenedor-error">
+                <h3>Error</h3>
+                <p id="mensajeError">Error Message</p>
+                <button onclick="contenedorError.style.display = 'none';">Cerrar</button>
             </div>
         </div>
 
@@ -69,36 +84,11 @@
 
 
 
-
-
-        <!-- <div class="contenedor-principal">
-            <div class="left-col">
-                <div class="contenedor-añadir">
-                    <input type="text" id="nombre" placeholder="Escriba un nombre">
-                    <button onclick="anadirNombre(nombre.value)" id="botonAnadir" style="display: block;">Añadir</button>
-                    <button onclick="modificarNombre(nombre.value)" id="botonModificar" style="display: none;">Mofificar</button>
-                    <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
-                </div>
-                <div>
-                    <input type="text" id="buscarNombre" placeholder="Nombre a buscar">
-                    <input type="text" id="reemplazarNombre" placeholder="Reemplazar">
-                    <button onclick="reemplazarTodos()" id="botonReemplazar" style="display: block;" >Reemplazar</button>
-                </div>
-                <div>
-                    <input type="text" id="buscar" placeholder="Buscar">
-                    <button onclick="buscar()" >Buscar</button>
-                    <div id="mostrarBusqueda"></div>
-                </div>
-                <div>
-                    <input type="text" id="buscarReemplazar" placeholder="Busca y Reemplaza">
-                    <button onclick="buscarReemplazar()" >Buscar Y Reemplazar</button>
-                    <div id="mostrarBusqueda"></div>
-                </div>
-                <div>
-                    <button id="botonReves" onclick="nombreReves()">Revés</button>
-                </div>
-            </div>
-            <main>
+<!-- 
+                
+                
+                
+                    
                 <h1>Lista de alumnos</h1>
                 <table id="tabla">
                     <tr>
@@ -110,12 +100,8 @@
             <div class="right-col">
                 Funcionalidades futuras
             </div>
-            <div class="contenedor-error">
-                <h3>Error</h3>
-                <p id="mensajeError">Error Message</p>
-                <button onclick="contenedorError.style.display = 'none';">Cerrar</button>
-            </div>
-        </div> -->
+            
+        </div> --> 
     </body>
 <script src="main.js"></script>
 </html>

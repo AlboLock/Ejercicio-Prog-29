@@ -52,7 +52,7 @@ function pintarTabla(array) {
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
-        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}" onclick="seleccionarNombre('${array[i]}', this.id)" style="cursor: pointer;">${array[i]}</td><td><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;
+        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}">${array[i]}<button id="botonReves" onclick="nombreReves()">Revés</button></td><td><button class="button" onclick="seleccionarNombre('${array[i]}')">Mofificar</button><button class="button" onclick="('${array[i]}')">Mas info</button><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;
         filaNueva.classList.add("filaTabla");
         tabla.appendChild(filaNueva);
         contadorAlumnos++;
@@ -88,8 +88,8 @@ function seleccionarNombre(nombre, indice) {
     nombreOriginal = nombre;
     cajaTexto.focus();
     botonAnadir.style.display = "none";
-    botonCancelar.style.display = "block";
-    botonModificar.style.display = "block";
+    botonCancelar.style.display = "inline";
+    botonModificar.style.display = "inline";
 }
 
 function modificarNombre(nombre) {
@@ -129,7 +129,7 @@ function promedioLongNombres(array) {
 
 function buscar() {
     let buscar = document.getElementById("buscar").value;
-    let mostrarBusqueda = document.getElementById("mostrarBusqueda");
+    let contenedoresFlotantes = document.getElementById("contenedoresFlotantes");
     let contadorAlumnos = 0;
 
 
@@ -139,7 +139,7 @@ function buscar() {
             contadorAlumnos++;
                 }
             }
-            mostrarBusqueda.innerHTML = contadorAlumnos;
+            contenedoresFlotantes.innerHTML = contadorAlumnos;
             
         }
         document.getElementById("buscar").value = "";
@@ -200,7 +200,7 @@ function nombreReves() {
 
 function buscarReemplazar() {
     let buscarReemplazar = document.getElementById("buscarReemplazar").value;
-    let mostrarReemplazar = document.getElementById("mostrarBusqueda");
+    let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
     let contador = 0;
     
     if (buscarReemplazar != "") {
