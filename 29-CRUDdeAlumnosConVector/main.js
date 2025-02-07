@@ -129,9 +129,20 @@ function promedioLongNombres(array) {
 
 function buscar() {
     let buscar = document.getElementById("buscar").value;
+    let mostrarBusqueda = document.getElementById("mostrarBusqueda");
+    let contadorAlumnos = 0;
 
 
-
+    if (buscar != "") {
+        for (let i = 0; i < arrayNombres.length; i++) {
+            if(buscar == arrayNombres[i]){
+            contadorAlumnos++;
+                }
+            }
+            mostrarBusqueda.innerHTML = contadorAlumnos;
+            
+        }
+        document.getElementById("buscar").value = "";
 }
 
 // V6: Crear función que reemplace todas las apariciones del nombre buscado por el nuevo nombre.
@@ -179,4 +190,27 @@ function nombreReves() {
         contenedorError.style.display = 'block';
         mensajeError.innerHTML = 'No hay nombres en el la lista';
     }
+}
+
+// V7: Búsqueda y Reemplazo Paso a Paso
+// Añadir un botón de buscar y reemplazar:
+// Mostrará cada aparición del nombre buscado en un contenedor, indicando el índice de la lista.
+// Añadirá un botón de reemplazar para cambiar el nombre en esa posición y otro de saltar para dejarlo sin cambios.
+// Al terminar el proceso, el contenedor informativo se vaciará.
+
+function buscarReemplazar() {
+    let buscarReemplazar = document.getElementById("buscarReemplazar").value;
+    let mostrarReemplazar = document.getElementById("mostrarBusqueda");
+    let contador = 0;
+    
+    if (buscarReemplazar != "") {
+        for (let i = 0; i < arrayNombres.length; i++) {
+        if (buscarReemplazar == arrayNombres[i]) {
+        contador++  
+        }
+    }
+    mostrarReemplazar.innerHTML = contador + arrayNombres[i];     
+    }
+
+    document.getElementById("buscarReemplazar").value = "";
 }
