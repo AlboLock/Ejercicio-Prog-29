@@ -1,7 +1,6 @@
 // Crear función que añade un nombre a un vector
 let arrayNombres = [];
 let cajaTexto = document.getElementById("nombre");
-let indice = 0;
 let botonAnadir = document.getElementById("botonAnadir");
 let botonModificar = document.getElementById("botonModificar");
 let botonCancelar = document.getElementById("botonCancelar");
@@ -10,6 +9,8 @@ let nombreCorto = 0;
 let nombreLargo = 0;
 let promedioNombres = 0;
 let contenedorError = document.querySelector('.contenedor-error');
+let contenedoresFlotantes = document.getElementById("contenedoresFlotantes");
+let mensajeFlotante = document.getElementById('mensajeFlotante');
 let mensajeError = document.getElementById('mensajeError');
 
 
@@ -28,7 +29,7 @@ function anadirNombre(nombre) {
 // Crear función que elimina un nombre de un vector
 
 function eliminarNombre(nombre) {
-
+    let indice = 0;
     indice = arrayNombres.indexOf(nombre);
 
     if (indice !== -1) {
@@ -52,7 +53,17 @@ function pintarTabla(array) {
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
-        filaNueva.innerHTML = `<td>${i + 1}</td><td id="${i}">${array[i]}<button id="botonReves" onclick="nombreReves()">Revés</button></td><td><button class="button" onclick="seleccionarNombre('${array[i]}')">Mofificar</button><button class="button" onclick="('${array[i]}')">Mas info</button><button class="button" onclick="eliminarNombre('${array[i]}')">Eliminar</button></td>`;
+        filaNueva.innerHTML = `<td>
+                                    ${i + 1}
+                                </td>
+                                <td id="${i}">
+                                    ${array[i]}<button id="botonReves" onclick="nombreReves(${i})">Revés</button>
+                                </td>
+                                <td>
+                                    <button onclick="seleccionarNombre('${array[i]}', ${i})">Mofificar</button>
+                                    <button>Mas info</button>
+                                    <button onclick="eliminarNombre('${array[i]}')">Eliminar</button>
+                                </td>`;
         filaNueva.classList.add("filaTabla");
         tabla.appendChild(filaNueva);
         contadorAlumnos++;
@@ -90,11 +101,12 @@ function seleccionarNombre(nombre, indice) {
     botonAnadir.style.display = "none";
     botonCancelar.style.display = "inline";
     botonModificar.style.display = "inline";
+    document.getElementById('botonRemplazar').style.display = 'none';
 }
 
 function modificarNombre(nombre) {
     arrayNombres[indiceSeleccionado] = nombre;
-    botonAnadir.style.display = "block";
+    botonAnadir.style.display = "inline";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
     cajaTexto.value = "";
@@ -104,9 +116,11 @@ function modificarNombre(nombre) {
 
 function volverAtras() {
     cajaTexto.value = '';
-    botonAnadir.style.display = "block";
+    botonAnadir.style.display = "inline";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
+    document.getElementById('botonRemplazar').style.display = 'inline';
+
 }
 
 function promedioLongNombres(array) {
@@ -129,20 +143,25 @@ function promedioLongNombres(array) {
 
 function buscar() {
     let buscar = document.getElementById("buscar").value;
-    let contenedoresFlotantes = document.getElementById("contenedoresFlotantes");
     let contadorAlumnos = 0;
-
-
     if (buscar != "") {
-        for (let i = 0; i < arrayNombres.length; i++) {
-            if(buscar == arrayNombres[i]){
-            contadorAlumnos++;
+        if (arrayNombres.includes(buscar)){
+            for (let i = 0; i < arrayNombres.length; i++) {
+                if (buscar == arrayNombres[i]) {
+                    contadorAlumnos++;
                 }
             }
-            contenedoresFlotantes.innerHTML = contadorAlumnos;
-            
+            contenedoresFlotantes.style.display = 'block';
+            mensajeFlotante.innerHTML = `En la lista hay ${contadorAlumnos} "${buscar}"`;
+        } else {
+            contenedorError.style.display = 'block';
+            mensajeError.innerHTML = 'El nombre no está en la lista';
         }
-        document.getElementById("buscar").value = "";
+    } else {
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'Rellenar el nombre para buscar';
+    }
+    document.getElementById("buscar").value = "";
 }
 
 // V6: Crear función que reemplace todas las apariciones del nombre buscado por el nuevo nombre.
@@ -167,29 +186,19 @@ function reemplazarTodos() {
         }
         document.getElementById("buscarNombre").value = "";
         document.getElementById("reemplazarNombre").value = "";
-
         pintarTabla(arrayNombres);
     }
-
 }
 
-function nombreReves() {
-    if (arrayNombres.length != 0) {
-        let botonReves = document.getElementById('botonReves');
-        if (botonReves.innerHTML == 'Revés')
-            botonReves.innerHTML = 'Derecho';
-        else
-            botonReves.innerHTML = 'Revés';
-        for (let i = 0; i < arrayNombres.length; i++) {
+function nombreReves(indice) {
+    for (let i = 0; i < arrayNombres.length; i++) {
+        if (i == indice){
             arrayLetras = arrayNombres[i].split('');
             arrayLetrasReves = arrayLetras.reverse();
             arrayNombres[i] = arrayLetrasReves.join('');
         }
-        pintarTabla(arrayNombres);
-    } else {
-        contenedorError.style.display = 'block';
-        mensajeError.innerHTML = 'No hay nombres en el la lista';
     }
+    pintarTabla(arrayNombres);
 }
 
 // V7: Búsqueda y Reemplazo Paso a Paso
@@ -202,7 +211,6 @@ function buscarReemplazar() {
     let buscarReemplazar = document.getElementById("buscarReemplazar").value;
     let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
     let contador = 0;
-    
     if (buscarReemplazar != "") {
         for (let i = 0; i < arrayNombres.length; i++) {
         if (buscarReemplazar == arrayNombres[i]) {
@@ -211,6 +219,5 @@ function buscarReemplazar() {
     }
     mostrarReemplazar.innerHTML = contador + arrayNombres[i];     
     }
-
     document.getElementById("buscarReemplazar").value = "";
 }

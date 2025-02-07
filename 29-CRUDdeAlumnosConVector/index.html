@@ -28,11 +28,11 @@
                     <input type="text" id="reemplazarNombre" placeholder="Reemplazar" style="display: none;">
                 </div>
                 <div class="columna3">
-                    <button onclick="anadirNombre(nombre.value)" id="botonAnadir" style="display: block;"> + Agregar</button>
+                    <button onclick="anadirNombre(nombre.value)" id="botonAnadir"> + Agregar</button>
                     <button onclick="modificarNombre(nombre.value)" id="botonModificar" style="display: none;">Mofificar</button>
                     <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
-                    <button onclick="reemplazarTodos()" id="botonReemplazar" style="display: none;" >Reemplazar</button>
-                    <button>Reemplazar</button>
+                    <button onclick="reemplazarTodos()" id="botonReemplazarTodos" style="display: none;" >Reemplazar</button>
+                    <button id="botonRemplazar">Reemplazar Nombres</button>
                 </div>
                 
             </div>
@@ -45,7 +45,8 @@
                 </table>
             </div>
             <div id="contenedoresFlotantes">
-
+                <p id="mensajeFlotante">Contenedor Flotante</p>
+                <button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>
             </div>
             <div class="contenedor-error">
                 <h3>Error</h3>
