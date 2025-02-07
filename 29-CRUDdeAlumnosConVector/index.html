@@ -11,7 +11,67 @@
     </head>
 
     <body>
-        <div class="contenedor-principal">
+
+        <div class="contenedorPrincipal">
+            <div class="titulo">
+                <h1>Lista Alumnos</h1>
+            </div>    
+            <div class="barraAcciones">
+                <div class="columna3">
+                    <input type="text" id="buscar" placeholder="Buscar">
+                    <button onclick="buscar()" >Buscar</button>
+                </div>
+                <div class="columna3">
+                    <input type="text" id="nombre" placeholder="Escriba un nombre">
+                </div>
+                <div class="columna3">
+                    <button onclick="anadirNombre(nombre.value)" id="botonAnadir" style="display: block;"> + Agregar</button>
+                </div>
+                
+            </div>
+            <div class="contenedorLista">
+                <table id="tabla">
+                    <tr>
+                        <td>Numero</td>
+                        <td>Nombre</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="contenedor-principal">
             <div class="left-col">
                 <div class="contenedor-añadir">
                     <input type="text" id="nombre" placeholder="Escriba un nombre">
@@ -55,7 +115,7 @@
                 <p id="mensajeError">Error Message</p>
                 <button onclick="contenedorError.style.display = 'none';">Cerrar</button>
             </div>
-        </div>
+        </div> -->
     </body>
 <script src="main.js"></script>
 </html>

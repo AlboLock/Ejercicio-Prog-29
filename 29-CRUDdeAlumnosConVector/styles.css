@@ -1,4 +1,36 @@
-/*Color Palette https://colorhunt.co/palette/d6efd880af81508d4e1a5319 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Karla", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+.contenedorPrincipal{
+    width: 97%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid gray;
+    margin: 0 auto;
+}
+.barraAcciones{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.columna3{
+    flex-basis: 33%;
+    margin: 0 auto;
+}
+
+
+
+
+/* Color Palette https://colorhunt.co/palette/d6efd880af81508d4e1a5319
 
 *{
     margin: 0;
@@ -108,4 +140,4 @@ table button:active{
 .contenedor-error button{
     margin: 4rem 50%;
     transform: translateX(-50%);
-}
+} */
