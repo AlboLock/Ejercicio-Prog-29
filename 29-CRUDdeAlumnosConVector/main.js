@@ -208,7 +208,7 @@ function nombreReves(indice) {
 // Al terminar el proceso, el contenedor informativo se vaciará.
 
 function buscarReemplazar() {
-    let nombreBuscado = document.getElementById("buscarReemplazar").value;
+    let nombreBuscado = document.getElementById("buscar").value;
     let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
     mostrarReemplazar.innerHTML = "";
     let nombreEncontrado = [];
@@ -219,9 +219,12 @@ function buscarReemplazar() {
         nombreEncontrado.push(i);  
         }
     }
-    mostrarReemplazar.innerHTML = `Ìndice ${contador} Nombre: ${arrayNombres[i]}`;     
+    for (let i = 0; i < nombreEncontrado.length; i++) {
+        mostrarReemplazar.innerHTML = `Ìndice ${contador} Nombre: ${arrayNombres[i]}`;
+        
     }
-    document.getElementById("buscarReemplazar").value = "";
+    }
+    document.getElementById("contenedoresFlotantes") = "";
 }
 
 // V10: Información Detallada de los Nombres
