@@ -206,18 +206,18 @@ function nombreReves(indice) {
 // Mostrará cada aparición del nombre buscado en un contenedor, indicando el índice de la lista.
 // Añadirá un botón de reemplazar para cambiar el nombre en esa posición y otro de saltar para dejarlo sin cambios.
 // Al terminar el proceso, el contenedor informativo se vaciará.
-
+let arrayIndices = [];
 function buscarReemplazar() {
     let nombreBuscado = document.getElementById("buscar").value;
     let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
     mostrarReemplazar.innerHTML = "";
-    let contenido ='<input type="text" id=""><button>Reemplazar</button>';
+    let contenido ='<input type="text" id="nombreReemplazado"><button onclick="reemplazoSeleccionados()">Reemplazar</button>';
 
     
     if (nombreBuscado != "") {
         for (let i = 0; i < arrayNombres.length; i++) {
         if (nombreBuscado == arrayNombres[i]) {
-            contenido+=`<div><span><input type="checkbox" id=""></span><span>${i+1}</span><span>${arrayNombres[i]}</span></div>`
+            contenido+=`<div><span><input type="checkbox" id="${i}" onclick="añadirArrayCambio(this.id);"></span><span>${i+1}</span><span>${arrayNombres[i]}</span></div>`
         }      
     }
     }
@@ -226,12 +226,26 @@ function buscarReemplazar() {
     mostrarReemplazar.style.display= "block";
 }
 
-function reemplazoSeleccionados() {
-    for (let i = 0; i < arrayNombres.length; i++) {
-        
+function añadirArrayCambio(id){
+    if (!arrayIndices.includes(id))
+        arrayIndices.push(id);
+    else {
+        arrayIndices.splice(arrayIndices.indexOf(id), 1);
     }
+    console.log(arrayIndices)
+}
 
-    
+function reemplazoSeleccionados() {
+    let nuevoNombre = document.getElementById('nombreReemplazado').value;
+    for (let i=0; i < arrayIndices.length; i++) {
+        for (let j=0; j<arrayNombres.length; j++){
+            if (arrayIndices[i] == j){
+                arrayNombres[j] = nuevoNombre;
+            }
+        }
+    }
+    pintarTabla(arrayNombres);
+    contenedoresFlotantes.style.display = 'none';
 }
 
 // V10: Información Detallada de los Nombres
