@@ -61,7 +61,7 @@ function pintarTabla(array) {
                                 </td>
                                 <td>
                                     <button onclick="seleccionarNombre('${array[i]}', ${i})">Mofificar</button>
-                                    <button>Mas info</button>
+                                    <button onclick="masInfo('${i}')">Mas info</button>
                                     <button onclick="eliminarNombre('${array[i]}')">Eliminar</button>
                                 </td>`;
         filaNueva.classList.add("filaTabla");
@@ -257,10 +257,48 @@ function reemplazoSeleccionados() {
 // Si es el nombre más corto, más largo o ninguno de los dos.
 // El número de vocales en el nombre.
 
-function masInfo() {
-    if (arrayNombres.length != 0){
-    let masInfo = document.getElementById("masInfo");
-    
+function masInfo(indice) {
+    let infoNombreMostrada = document.getElementById("contenedoresFlotantes");
+    let nombreSeleccionado = arrayNombres[indice];
+    let longitudNombre = nombreSeleccionado.length;
+    let resultadoPromedio = "";
+    let tamanoNombre = "";
+    let vocales = [];
+    let listaVocales = "aeiouAEIOU";
+
+    let promedio = parseFloat(promedioNombres);  
+
+    if (longitudNombre < promedio) {
+        resultadoPromedio = `Está por debajo del promedio`;
+    } else if (longitudNombre === promedio) {
+        resultadoPromedio = `Es igual al promedio`;
+    } else {
+        resultadoPromedio = `Está por encima del promedio`;
     }
+
+    if (longitudNombre === nombreCorto) {
+        tamanoNombre = `Es el nombre más corto`;
+    } else if (longitudNombre === nombreLargo) {
+        tamanoNombre = `Es el más largo`;
+    } else {
+        tamanoNombre = `No es ni el más corto ni el más largo`;
+    }
+
+    for (let j = 0; j < nombreSeleccionado.length; j++) {
+        let letra = nombreSeleccionado[j];
+        if (listaVocales.includes(letra)) {
+            vocales.push(letra);
+        }
+    }
+
+    infoNombreMostrada.innerHTML = `
+                                    <p> ${nombreSeleccionado}</p>
+                                    <p>Tiene ${longitudNombre} letras</p>
+                                    <p>${resultadoPromedio}</p>
+                                    <p>${tamanoNombre}</p>
+                                    <p>Contiene estas vocales: ${vocales.join(", ")}</p>
+                                    <button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
+    infoNombreMostrada.style.display = 'block';
     
 }
+
