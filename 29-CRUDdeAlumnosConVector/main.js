@@ -211,20 +211,27 @@ function buscarReemplazar() {
     let nombreBuscado = document.getElementById("buscar").value;
     let mostrarReemplazar = document.getElementById("contenedoresFlotantes");
     mostrarReemplazar.innerHTML = "";
-    let nombreEncontrado = [];
+    let contenido ='<input type="text" id=""><button>Reemplazar</button>';
+
     
     if (nombreBuscado != "") {
         for (let i = 0; i < arrayNombres.length; i++) {
         if (nombreBuscado == arrayNombres[i]) {
-        nombreEncontrado.push(i);  
-        }
+            contenido+=`<div><span><input type="checkbox" id=""></span><span>${i+1}</span><span>${arrayNombres[i]}</span></div>`
+        }      
     }
-    for (let i = 0; i < nombreEncontrado.length; i++) {
-        mostrarReemplazar.innerHTML = `Ìndice ${contador} Nombre: ${arrayNombres[i]}`;
+    }
+    contenido+=`<button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
+    mostrarReemplazar.innerHTML = contenido;
+    mostrarReemplazar.style.display= "block";
+}
+
+function reemplazoSeleccionados() {
+    for (let i = 0; i < arrayNombres.length; i++) {
         
     }
-    }
-    document.getElementById("contenedoresFlotantes") = "";
+
+    
 }
 
 // V10: Información Detallada de los Nombres
