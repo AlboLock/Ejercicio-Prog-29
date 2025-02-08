@@ -49,7 +49,7 @@ function pintarTabla(array) {
     cajaTexto.focus();
     let contadorAlumnos = 0;
 
-    tabla.innerHTML = "<tr><td>Numero</td><td>Nombre</td></tr>";
+    tabla.innerHTML = "<tr><td>Numero</td><td>Nombre</td><td></td></tr>";
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
@@ -60,9 +60,11 @@ function pintarTabla(array) {
                                     ${array[i]}<button id="botonReves" onclick="nombreReves(${i})">Revés</button>
                                 </td>
                                 <td>
-                                    <button onclick="seleccionarNombre('${array[i]}', ${i})">Mofificar</button>
-                                    <button onclick="masInfo('${i}')">Mas info</button>
-                                    <button onclick="eliminarNombre('${array[i]}')">Eliminar</button>
+                                    <div class="contenedor-iconos">
+                                        <span onclick="seleccionarNombre('${array[i]}', ${i})"><img src="img/icono_modificar.png"></span>
+                                        <span onclick="masInfo('${i}')"><img src="img/icono_masInfo.png"></span>
+                                        <span onclick="eliminarNombre('${array[i]}')"><img src="img/icono_borrar.png"></span>
+                                    </div>
                                 </td>`;
         filaNueva.classList.add("filaTabla");
         tabla.appendChild(filaNueva);
@@ -120,7 +122,6 @@ function volverAtras() {
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
     document.getElementById('botonRemplazar').style.display = 'inline';
-
 }
 
 function promedioLongNombres(array) {
@@ -165,6 +166,15 @@ function buscar() {
 }
 
 // V6: Crear función que reemplace todas las apariciones del nombre buscado por el nuevo nombre.
+
+function mostrarInputRemplazo(){
+    document.getElementById('botonRemplazar').style.display = 'none';
+    document.getElementById("buscarNombre").style.display = 'inline';
+    document.getElementById("reemplazarNombre").style.display = 'inline';
+    document.getElementById("botonReemplazarTodos").style.display = 'inline';
+    cajaTexto.style.display = 'none';
+    botonAnadir.style.display = 'none';
+}
 
 function reemplazarTodos() {
     let nombreBuscado = document.getElementById("buscarNombre").value;

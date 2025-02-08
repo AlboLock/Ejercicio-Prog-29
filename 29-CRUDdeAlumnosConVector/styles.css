@@ -8,12 +8,10 @@
     font-style: normal;
 }
 .contenedorPrincipal{
-    width: 99.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid gray;
     margin: 0 auto;
 }
 .barraAcciones{
@@ -41,7 +39,8 @@ table{
 td{
     text-align: center;
     height: 75px;
-    border-top: 2px solid gray;
+    width: 33%;
+    border-bottom: 2px solid gray;
 }
 .contenedor-error{
     display: none;
@@ -79,6 +78,35 @@ td{
     padding: 150px;
     transform: translate(-50%, -50%);
     border: 1px solid black;
+}
+
+.contenedor-iconos{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    border: 1px solid black;
+    padding: 3px 0;
+    border-radius: 30px;
+    margin: 0 auto;
+    box-shadow: 3px 3px 3px gray;
+}
+
+.contenedor-iconos span{
+    display: flex;
+    align-items: center;
+    flex-basis: 33%;
+    margin: 0 10px;
+}
+
+.contenedor-iconos span img{
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+}
+
+.contenedor-iconos span img:hover{
+    transform: scale(1.1);
 }
 
 

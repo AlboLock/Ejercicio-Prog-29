@@ -19,7 +19,7 @@
             <div class="barraAcciones">
                 <div class="columna3">
                     <input type="text" id="buscar" placeholder="Buscar">
-                    <button onclick="buscar()">Buscar N. apariciones</button>
+                    <button onclick="buscar()">Buscar N&deg; apariciones</button>
                     <button onclick="buscarReemplazar()" >Buscar Y Reemplazar</button>
                 </div>
                 <div class="columna3">
@@ -32,16 +32,12 @@
                     <button onclick="modificarNombre(nombre.value)" id="botonModificar" style="display: none;">Mofificar</button>
                     <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
                     <button onclick="reemplazarTodos()" id="botonReemplazarTodos" style="display: none;" >Reemplazar</button>
-                    <button id="botonRemplazar">Reemplazar Nombres</button>
+                    <button onclick="mostrarInputRemplazo()" id="botonRemplazar">Reemplazar Nombres</button>
                 </div>
                 
             </div>
             <div class="contenedorLista">
                 <table id="tabla">
-                    <tr>
-                        <td>Numero</td>
-                        <td>Nombre</td>
-                    </tr>
                 </table>
             </div>
             <div id="contenedoresFlotantes">
