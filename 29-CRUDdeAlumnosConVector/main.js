@@ -12,7 +12,7 @@ let contenedorError = document.querySelector('.contenedor-error');
 let contenedoresFlotantes = document.getElementById("contenedoresFlotantes");
 let mensajeFlotante = document.getElementById('mensajeFlotante');
 let mensajeError = document.getElementById('mensajeError');
-
+let modificando = false;
 
 function anadirNombre(nombre) {
     if (nombre == "") {
@@ -89,7 +89,11 @@ cajaTexto.addEventListener("keydown", function (evento) {
             contenedorError.style.display = 'block';
             mensajeError.innerHTML = 'El campo está vacío';
         } else {
-            anadirNombre(cajaTexto.value);
+            if (!modificando)
+                anadirNombre(cajaTexto.value);
+            else{
+                modificarNombre(cajaTexto.value)
+            }
         }
     }
 });
@@ -97,6 +101,7 @@ cajaTexto.addEventListener("keydown", function (evento) {
 let indiceSeleccionado;
 
 function seleccionarNombre(nombre, indice) {
+    modificando = true;
     indiceSeleccionado = indice;
     cajaTexto.value = nombre;
     nombreOriginal = nombre;
@@ -115,6 +120,8 @@ function modificarNombre(nombre) {
     cajaTexto.value = "";
     nombreOriginal = "";
     pintarTabla(arrayNombres);
+    modificando = false;
+    document.getElementById('botonRemplazar').style.display = 'inline';
 }
 
 function volverAtras() {
