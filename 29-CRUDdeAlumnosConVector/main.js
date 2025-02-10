@@ -92,7 +92,7 @@ cajaTexto.addEventListener("keydown", function (evento) {
             if (!modificando)
                 anadirNombre(cajaTexto.value);
             else{
-                modificarNombre(cajaTexto.value)
+                modificarNombre(cajaTexto.value);
             }
         }
     }
