@@ -49,7 +49,7 @@ function pintarTabla(array) {
     cajaTexto.focus();
     let contadorAlumnos = 0;
 
-    tabla.innerHTML = "<tr style='background-color: #A7B49E'><td style='font-weight: bold; color:rgb(38, 73, 103)'>NUMERO</td><td style='font-weight: bold; color:  rgb(38, 73, 103)'>NOMBRE</td><td></td></tr>";
+    tabla.innerHTML = "<tr style='background-color:rgb(148, 152, 144)'><td style='font-weight: bold;  font-size: 27px; color:rgb(38, 73, 103)'>NUMERO</td><td style='font-weight: bold; font-size: 27px; color:  rgb(38, 73, 103)'>NOMBRE</td><td></td></tr>";
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
