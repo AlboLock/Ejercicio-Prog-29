@@ -53,11 +53,12 @@ function pintarTabla(array) {
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
+        filaNueva.classList.add('filaTabla');
         filaNueva.innerHTML = `<td>
                                     ${i + 1}
                                 </td>
                                 <td id="${i}">
-                                    ${array[i]}<button id="botonReves" onclick="nombreReves(${i})">Revés</button>
+                                    ${array[i]}<span class="reves-img"><img id="imagen${i}" src="img/reves.png" onclick="nombreReves(${i}, this)"></span>
                                 </td>
                                 <td>
                                     <div class="contenedor-iconos">
@@ -153,7 +154,9 @@ function buscar() {
                 }
             }
             contenedoresFlotantes.style.display = 'block';
-            mensajeFlotante.innerHTML = `En la lista hay ${contadorAlumnos} "${buscar}"`;
+            contenedoresFlotantes.innerHTML = '';
+            contenedoresFlotantes.innerHTML = `En la lista hay ${contadorAlumnos} "${buscar}"`;
+            contenedoresFlotantes.innerHTML += `<button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
         } else {
             contenedorError.style.display = 'block';
             mensajeError.innerHTML = 'El nombre no está en la lista';
@@ -200,6 +203,7 @@ function reemplazarTodos() {
     }
 }
 
+let estaReves = false;
 function nombreReves(indice) {
     for (let i = 0; i < arrayNombres.length; i++) {
         if (i == indice){
@@ -269,6 +273,7 @@ function reemplazoSeleccionados() {
 
 function masInfo(indice) {
     let infoNombreMostrada = document.getElementById("contenedoresFlotantes");
+    infoNombreMostrada.innerHTML = '';
     let nombreSeleccionado = arrayNombres[indice];
     let longitudNombre = nombreSeleccionado.length;
     let resultadoPromedio = "";
