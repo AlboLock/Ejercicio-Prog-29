@@ -46,6 +46,7 @@ h1{
 #buscar{
     margin-left: 15px;
     padding: 5px 2.5px;
+    border: 2px solid rgb(38, 73, 103);
 }
 
 #nombre{
