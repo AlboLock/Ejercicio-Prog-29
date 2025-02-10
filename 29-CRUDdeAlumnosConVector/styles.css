@@ -7,6 +7,12 @@
     font-weight: 400;
     font-style: normal;
 }
+
+h1{
+    font-weight: bold;
+    letter-spacing: 6px;
+    font-size: 50px;
+}
 .contenedorPrincipal{
     display: flex;
     flex-direction: column;
@@ -32,7 +38,16 @@
 .columna3{
     flex-basis: 33%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
+
+#buscar{
+    margin-left: 15px;
+    padding: 5px 2.5px;
+}
+
 #nombre{
     width: 75%;
     padding: 10px 5px;
@@ -48,7 +63,12 @@ table{
     margin-top: 15px;
 }
 td{
+    font-family: "Roboto Condensed", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
     text-align: center;
+    font-size: 20px;
     height: 75px;
     width: 33%;
     border-bottom: 2px solid gray;
@@ -147,6 +167,34 @@ td{
 .reves-img:hover{
     transform: scale(1.1);
 }
+
+#botonAnadir{
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+    margin: 0 10px;
+}
+
+#botonAnadir:hover{
+    transform: translateY(-2px);
+}
+
+#botonAnadir img{
+    width: 100%;
+}
+
+button{
+    padding: 5px 15px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.filaEstadisticas{
+    background-color: #A7B49E;
+}
+
 
 
 

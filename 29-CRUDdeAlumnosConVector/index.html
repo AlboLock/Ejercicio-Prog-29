@@ -8,6 +8,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet">
     </head>
 
     <body>
@@ -28,11 +32,11 @@
                     <input type="text" id="reemplazarNombre" placeholder="Reemplazar" style="display: none;">
                 </div>
                 <div class="columna3">
-                    <button onclick="anadirNombre(nombre.value)" id="botonAnadir"> + Agregar</button>
+                    <span onclick="anadirNombre(nombre.value)" id="botonAnadir"><img src="img/agregar.jpg" alt=""></span>
                     <button onclick="modificarNombre(nombre.value)" id="botonModificar" style="display: none;">Mofificar</button>
-                    <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
                     <button onclick="reemplazarTodos()" id="botonReemplazarTodos" style="display: none;" >Reemplazar</button>
                     <button onclick="mostrarInputRemplazo()" id="botonRemplazar">Reemplazar Nombres</button>
+                    <button onclick="volverAtras()" id="botonCancelar" style="display: none;">Cancelar</button>
                 </div>
             </div>
             <div class="contenedorLista">

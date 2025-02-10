@@ -49,7 +49,7 @@ function pintarTabla(array) {
     cajaTexto.focus();
     let contadorAlumnos = 0;
 
-    tabla.innerHTML = "<tr><td>Numero</td><td>Nombre</td><td></td></tr>";
+    tabla.innerHTML = "<tr style='background-color: #A7B49E'><td style='font-weight: bold; color:rgb(38, 73, 103)'>NUMERO</td><td style='font-weight: bold; color:  rgb(38, 73, 103)'>NOMBRE</td><td></td></tr>";
 
     for (let i = 0; i < array.length; i++) {
         let filaNueva = document.createElement("tr");
@@ -122,7 +122,11 @@ function volverAtras() {
     botonAnadir.style.display = "inline";
     botonCancelar.style.display = "none";
     botonModificar.style.display = "none";
+    document.getElementById("buscarNombre").style.display = 'none';
+    document.getElementById("reemplazarNombre").style.display = 'none';
     document.getElementById('botonRemplazar').style.display = 'inline';
+    document.getElementById("botonReemplazarTodos").style.display = 'none';
+    cajaTexto.style.display = 'inline';
 }
 
 function promedioLongNombres(array) {
@@ -175,6 +179,7 @@ function mostrarInputRemplazo(){
     document.getElementById("buscarNombre").style.display = 'inline';
     document.getElementById("reemplazarNombre").style.display = 'inline';
     document.getElementById("botonReemplazarTodos").style.display = 'inline';
+    botonCancelar.style.display = 'inline';
     cajaTexto.style.display = 'none';
     botonAnadir.style.display = 'none';
 }
@@ -182,7 +187,7 @@ function mostrarInputRemplazo(){
 function reemplazarTodos() {
     let nombreBuscado = document.getElementById("buscarNombre").value;
     let nombreReemplazado = document.getElementById("reemplazarNombre").value;
-
+    
 
     if (nombreBuscado == "" || nombreReemplazado == "") {
         contenedorError.style.display = 'block';
@@ -203,7 +208,6 @@ function reemplazarTodos() {
     }
 }
 
-let estaReves = false;
 function nombreReves(indice) {
     for (let i = 0; i < arrayNombres.length; i++) {
         if (i == indice){
