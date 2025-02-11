@@ -207,20 +207,23 @@ td{
 }
 
 .reves-img{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-left: 50px;
     box-shadow: 3px 3px 3px gray;
     cursor: pointer;
     transition: transform 0.1s ease-out;
     background-color: transparent;
+    margin-right: 20px;
 }
 
 .reves-img img{
+    padding: 3px;
     border-radius: 50%;
-    width: 90%;
+    width: 100%;
     border: 1px solid gray;
 }
 
@@ -273,90 +276,14 @@ button:hover{
     color: #093357;
 }
 
-
-
-
-
-/* Color Palette https://colorhunt.co/palette/d6efd880af81508d4e1a5319
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Karla", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.contenedor-principal{
-    position: relative;
+.tdNombre{
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    min-height: 100vh;
-    background: linear-gradient(to right, #508D4E, #80AF81, #508D4E);
-}
-
-.left-col{
-    display: flex;
-    flex-basis: 25%;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    width: 100%;
 }
 
-.contenedor-añadir{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-main{
+.tdNombre span:nth-child(1){
+    flex-grow: 1;
     flex-basis: 50%;
 }
-
-.right-col{
-    flex-basis: 25%;
-}
-
-
-table button{
-    padding: 0.5rem;
-    border-radius: 20px;
-    border: 0;
-    outline: 0;
-    cursor: pointer;
-    transition: all 0.1s ease-out;
-}
-
-table button:hover{
-    transform: translateY(-2px);
-    box-shadow: 2px 2px 5px gray,
-                -2px 2px 5px gray;
-}
-
-table button:active{
-    transform: translateY(0px);
-    box-shadow: none;
-}
-
-
-
-.filaEstadisticas td{
-    background-color: #508D4E;
-    font-weight: 700;
-    border-radius: 10px;
-    border: 1px solid #508D4E;
-    transition: all 1s ease-out;
-}
-
-.filaEstadisticas td:hover{
-    transform: scale(1.05);
-    border: 1px solid #039a10;
-    border-color: #039a10;
-    background-color: #8dbf8c;
-}
-
- */

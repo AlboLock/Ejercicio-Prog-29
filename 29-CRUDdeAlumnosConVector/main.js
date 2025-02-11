@@ -57,8 +57,8 @@ function pintarTabla(array) {
         filaNueva.innerHTML = `<td>
                                     ${i + 1}
                                 </td>
-                                <td id="${i}">
-                                    ${array[i]}<span class="reves-img"><img id="imagen${i}" src="img/reves.png" onclick="nombreReves(${i}, this)"></span>
+                                <td class="tdNombre" id="${i}">
+                                    <span id="spanNombre${i}">${array[i]}</span><span class="reves-img"><img id="imagen${i}" src="img/reves.png" onclick="nombreReves(${i}, this.src)"></span>
                                 </td>
                                 <td>
                                     <div class="contenedor-iconos">
@@ -202,7 +202,7 @@ function reemplazarTodos() {
         return;
     } else if (!arrayNombres.includes(nombreBuscado)) {
         contenedorError.style.display = 'block';
-        mensajeError.innerHTML = 'El nombre no se encontró en el array';
+        mensajeError.innerHTML = 'El nombre no se encontró en el la lista';
     } else {
         for (let i = 0; i < arrayNombres.length; i++) {
             if (arrayNombres[i] === nombreBuscado) {
@@ -212,18 +212,29 @@ function reemplazarTodos() {
         document.getElementById("buscarNombre").value = "";
         document.getElementById("reemplazarNombre").value = "";
         pintarTabla(arrayNombres);
+        document.getElementById('botonRemplazar').style.display = 'inline';
+        document.getElementById("buscarNombre").style.display = 'none';
+        document.getElementById("reemplazarNombre").style.display = 'none';
+        document.getElementById("botonReemplazarTodos").style.display = 'none';
+        botonCancelar.style.display = 'none';
+        cajaTexto.style.display = 'inline';
+        botonAnadir.style.display = 'inline';
     }
 }
 
-function nombreReves(indice) {
+function nombreReves(indice, srcImagen) {
     for (let i = 0; i < arrayNombres.length; i++) {
         if (i == indice){
             arrayLetras = arrayNombres[i].split('');
             arrayLetrasReves = arrayLetras.reverse();
             arrayNombres[i] = arrayLetrasReves.join('');
+            document.getElementById(`spanNombre${i}`).innerHTML = arrayNombres[i];
         }
     }
-    pintarTabla(arrayNombres);
+    if (srcImagen.includes('reves.png'))
+        document.getElementById(`imagen${indice}`).src = 'img/derecho.png';
+    else
+        document.getElementById(`imagen${indice}`).src = 'img/reves.png';
 }
 
 // V7: Búsqueda y Reemplazo Paso a Paso
@@ -240,16 +251,25 @@ function buscarReemplazar() {
 
     
     if (nombreBuscado != "") {
-        for (let i = 0; i < arrayNombres.length; i++) {
-        if (nombreBuscado == arrayNombres[i]) {
-            contenido+=`<div><span><input type="checkbox" id="${i}" onclick="añadirArrayCambio(this.id);"><span> </span></span><span>${i+1}</span><span> </span><span>${arrayNombres[i]}</span></div>`
-        }      
+        if (arrayNombres.includes(nombreBuscado)){
+            for (let i = 0; i < arrayNombres.length; i++) {
+                if (nombreBuscado == arrayNombres[i]) {
+                    contenido += `<div><span><input type="checkbox" id="${i}" onclick="añadirArrayCambio(this.id);"><span> </span></span><span>${i + 1}</span><span> </span><span>${arrayNombres[i]}</span></div>`
+                }
+            }
+            contenido += `<button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
+            mostrarReemplazar.innerHTML = contenido;
+            mostrarReemplazar.style.display = "block";
+            document.getElementById("buscar").value = "";
+        } else {
+            contenedorError.style.display = 'block';
+            mensajeError.innerHTML = 'El nombre no está en la lista';
+        }
+        
+    } else {
+        contenedorError.style.display = 'block';
+        mensajeError.innerHTML = 'Rellenar el nombre para buscar';
     }
-    }
-    contenido+=`<button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
-    mostrarReemplazar.innerHTML = contenido;
-    mostrarReemplazar.style.display= "block";
-    document.getElementById("buscar").value = "";
 }
 
 function añadirArrayCambio(id){
@@ -319,7 +339,7 @@ function masInfo(indice) {
     }
 
     infoNombreMostrada.innerHTML = `
-                                    <p> ${nombreSeleccionado}</p>
+                                    <p> "${nombreSeleccionado}"</p>
                                     <p>Tiene ${longitudNombre} letras</p>
                                     <p>${resultadoPromedio}</p>
                                     <p>${tamanoNombre}</p>
