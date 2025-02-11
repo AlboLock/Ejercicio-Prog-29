@@ -242,13 +242,14 @@ function buscarReemplazar() {
     if (nombreBuscado != "") {
         for (let i = 0; i < arrayNombres.length; i++) {
         if (nombreBuscado == arrayNombres[i]) {
-            contenido+=`<div><span><input type="checkbox" id="${i}" onclick="añadirArrayCambio(this.id);"></span><span>${i+1}</span><span>${arrayNombres[i]}</span></div>`
+            contenido+=`<div><span><input type="checkbox" id="${i}" onclick="añadirArrayCambio(this.id);"><span> </span></span><span>${i+1}</span><span> </span><span>${arrayNombres[i]}</span></div>`
         }      
     }
     }
     contenido+=`<button onclick="contenedoresFlotantes.style.display = 'none';">Cerrar</button>`;
     mostrarReemplazar.innerHTML = contenido;
     mostrarReemplazar.style.display= "block";
+    document.getElementById("buscar").value = "";
 }
 
 function añadirArrayCambio(id){
