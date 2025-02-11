@@ -21,10 +21,14 @@
                 <h1>Lista Alumnos</h1>
             </div>    
             <div class="barraAcciones">
-                <div class="columna3">
-                    <input type="text" id="buscar" placeholder="Buscar">
-                    <button onclick="buscar()">Buscar N&deg; apariciones</button>
-                    <button onclick="buscarReemplazar()" >Buscar Y Reemplazar</button>
+                <div id="columnaBuscar" class="columna3">
+                    <div>
+                        <input type="text" id="buscar" placeholder="Buscar">
+                    </div>
+                    <div>
+                        <button onclick="buscar()">Buscar N&deg; apariciones</button>
+                        <button onclick="buscarReemplazar()" >Buscar Y Reemplazar</button>
+                    </div>
                 </div>
                 <div class="columna3">
                     <input type="text" id="nombre" placeholder="Escriba un nombre">
